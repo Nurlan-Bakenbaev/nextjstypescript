@@ -5,9 +5,9 @@ export default function Posts() {
   const posts = getSortedPostsData();
 
   return (
-    <section className="flex flex-col max-w-2xl mx-auto px-3">
+    <section>
       <h2 className="text-4xl font-bold mt-8 text-white ">Blog</h2>
-      <ul >
+      <ul className="hover:text-">
         {posts.map((post) => (
           <ListItem key={post.id} post={post} />
         ))}
