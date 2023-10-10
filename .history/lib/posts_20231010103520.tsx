@@ -3,8 +3,25 @@ import path from "path";
 import matter from "gray-matter";
 import { remark } from "remark";
 import html from "remark-html";
-
+import someDatabaseSDK from 'someDatabaseSDK'
 const postsDirectory = path.join(process.cwd(), "blogposts");
+
+
+export async function getSortedPostsData() {
+  // Instead of the file system,
+  // fetch post data from an external API endpoint
+  const res = await fetch('..');
+  return res.json();
+}
+
+
+const databaseClient = someDatabaseSDK.createClient(...)
+
+export async function getSortedPostsData() {
+  // Instead of the file system,
+  // fetch post data from a database
+  return databaseClient.query('SELECT posts...')
+}
 export function getSortedPostsData() {
   // Get file names under /posts
   const fileNames = fs.readdirSync(postsDirectory);
@@ -34,22 +51,4 @@ export function getSortedPostsData() {
       return -1;
     }
   });
-}
-export  async function getPostData(id: string) {
-  const fullPath = path.join(postsDirectory, `${id}.md`);
-  const fileContents = fs.readFileSync(fullPath, "utf-8");
-  //gray matter
-  const matterResult = matter(fileContents);
-  const processedContent = await remark()
-    .use(html)
-    .process(matterResult.content);
-
-  const contentHtml = processedContent.toString();
-  const blogPostWithHTML: BlogPost & { contentHtml: string } = {
-    id,
-    title: matterResult.data.title,
-    date: matterResult.data.date,
-    contentHtml,
-  };
-  return blogPostWithHTML
 }

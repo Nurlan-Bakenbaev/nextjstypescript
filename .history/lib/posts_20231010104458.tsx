@@ -35,7 +35,7 @@ export function getSortedPostsData() {
     }
   });
 }
-export  async function getPostData(id: string) {
+export async function getPostData(id: string) {
   const fullPath = path.join(postsDirectory, `${id}.md`);
   const fileContents = fs.readFileSync(fullPath, "utf-8");
   //gray matter
@@ -51,5 +51,5 @@ export  async function getPostData(id: string) {
     date: matterResult.data.date,
     contentHtml,
   };
-  return blogPostWithHTML
+  re
 }

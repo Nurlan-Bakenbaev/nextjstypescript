@@ -35,7 +35,7 @@ export function getSortedPostsData() {
     }
   });
 }
-export  async function getPostData(id: string) {
+export async function getPostData(id: string) {
   const fullPath = path.join(postsDirectory, `${id}.md`);
   const fileContents = fs.readFileSync(fullPath, "utf-8");
   //gray matter
@@ -45,11 +45,7 @@ export  async function getPostData(id: string) {
     .process(matterResult.content);
 
   const contentHtml = processedContent.toString();
-  const blogPostWithHTML: BlogPost & { contentHtml: string } = {
-    id,
-    title: matterResult.data.title,
-    date: matterResult.data.date,
-    contentHtml,
-  };
-  return blogPostWithHTML
+  const blogPostWithHTML:BlogPost & {contentHtml:string}={id,title:matterResult.data.title,date:matterResult
+
+  }
 }

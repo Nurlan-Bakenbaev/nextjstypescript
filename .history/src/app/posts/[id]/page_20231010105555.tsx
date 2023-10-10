@@ -2,6 +2,7 @@ import React from "react";
 import { getSortedPostsData, getPostData } from "../../../../lib/posts";
 import { notFound } from "next/navigation";
 import getFormattedDate from "../../../../lib/getFormattedDate";
+import { publicDecrypt } from "crypto";
 import Link from "next/link";
 export function generateMetadata({ params }: { params: { postId: string } }) {
   const posts = getSortedPostsData();
@@ -30,10 +31,8 @@ export default async function Post({ params }: { params: { postId: string } }) {
       <h1 className="text-3xl mt-4 mb-0"> {title}</h1>
       <p className="mt-0">{pubDate}</p>
       <article>
-        <section dangerouslySetInnerHTML={{ __html: contentHtml }}>
-          <p>
-            <Link href={"/"}> Back to Home</Link>
-          </p>
+        <section dangerouslySetInnerHTML={{__html:contentHtml}}>
+          <p> <Link href={'/'}> Back to Home</Link></p>
         </section>
       </article>
     </main>

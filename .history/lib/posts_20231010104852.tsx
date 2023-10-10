@@ -35,7 +35,7 @@ export function getSortedPostsData() {
     }
   });
 }
-export  async function getPostData(id: string) {
+export de async function getPostData(id: string) {
   const fullPath = path.join(postsDirectory, `${id}.md`);
   const fileContents = fs.readFileSync(fullPath, "utf-8");
   //gray matter
