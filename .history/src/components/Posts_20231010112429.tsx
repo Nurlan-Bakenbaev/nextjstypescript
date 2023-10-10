@@ -1,4 +1,4 @@
-import { getSortedPostsData } from "../../lib/posts"
+import { getSortedPostsData
 import ListItem from "./ListItem"
 
 export default function Posts() {
